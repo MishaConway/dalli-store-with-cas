@@ -4,7 +4,7 @@ require 'dalli/cas/client'
 module ActiveSupport
 	module Cache
 		class DalliStoreWithCas < DalliStore
-			DALLI_STORE_WITH_CAS_VERSION = "0.0.1"
+			DALLI_STORE_WITH_CAS_VERSION = "0.0.2"
 
 			def cas(name, options = {})
 				cas_multi(name, options) { |kv| { kv.keys.first => yield(kv.values.first) } }
