@@ -55,8 +55,9 @@ class TestDalliStoreWithCas < ActiveSupport::TestCase
 		assert_equal 'bar', @cache.read('foo')
 	end
 
-	def test_cas_with_cache_miss
-		refute @cache.cas('not_exist') { |_value| raise Dalli::DalliError }
+	def test_cas_with_cache_failure
+		@cache.write('failing_key', 'blah')
+		refute @cache.cas('failing_key') { |_value| raise Dalli::DalliError }
 	end
 
 	def test_cas_with_conflict
