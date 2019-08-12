@@ -1,0 +1,39 @@
+PATH
+  remote: .
+  specs:
+    dalli-store-with-cas (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (5.2.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    concurrent-ruby (1.1.5)
+    dalli (2.7.10)
+    i18n (1.6.0)
+      concurrent-ruby (~> 1.0)
+    metaclass (0.0.4)
+    minitest (5.11.3)
+    mocha (1.9.0)
+      metaclass (~> 0.0.1)
+    rake (10.5.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activesupport (~> 5.2.0.rc1)
+  bundler (~> 1.16)
+  dalli
+  dalli-store-with-cas!
+  mocha
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.16.5
