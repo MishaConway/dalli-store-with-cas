@@ -1,8 +1,11 @@
-# Dalli::Store::With::With::Cas
+# DalliStoreWithCas
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dalli/store/with/with/cas`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Provides ActiveSupport::Cache::DalliStoreWithCas which inherits dalli's ActiveSupport::Cache::DalliStore cache adapter 
+extends it with two new methods, cas and cas_multi. These methods are specifically implemented to be compatible with IdentityCache
+so it's good news for 
+    
+    - those wishing to use Dalli with IdentityCache with full support (with normal DalliStore, IdentityCache activates its 'fallback fetcher' which doesn't protect against various race conditions leading to corrupted data 
+    - those who just want cas support on DalliStore
 
 ## Installation
 
@@ -22,7 +25,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Usage instructions to be added
 
 ## Development
 
@@ -30,9 +33,15 @@ After checking out the repo, run `bin/setup` to install dependencies. You can al
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+## Tests
+
+Tests can be run via
+
+    ruby -Ilib:test test/test_dalli_store_with_cas.rb
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/dalli-store-with-with-cas.
+Bug reports and pull requests are welcome on GitHub at https://github.com/MishaConway/dalli-store-with-cas.
 
 ## License
 
