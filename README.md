@@ -4,7 +4,10 @@ Provides ActiveSupport::Cache::DalliStoreWithCas which inherits dalli's ActiveSu
 extends it with two new methods, cas and cas_multi. These methods are specifically implemented to be compatible with IdentityCache
 so it's good news for 
     
-    - those wishing to use Dalli with IdentityCache with full support (with normal DalliStore, IdentityCache activates its 'fallback fetcher' which doesn't protect against various race conditions leading to corrupted data 
+    - those wishing to use Dalli with IdentityCache with full support 
+      (with normal DalliStore, IdentityCache activates its 'fallback fetcher',
+       which doesn't protect against various race conditions leading to corrupted data 
+    
     - those who just want cas support on DalliStore
 
 ## Installation
