@@ -15,7 +15,7 @@ so it's good news for
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'dalli-store-with-with-cas'
+gem 'dalli-store-with-cas'
 ```
 
 And then execute:
@@ -24,7 +24,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install dalli-store-with-with-cas
+    $ gem install dalli-store-with-cas
 
 ## Usage
 
