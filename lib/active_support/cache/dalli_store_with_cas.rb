@@ -7,21 +7,7 @@ module ActiveSupport
 			DALLI_STORE_WITH_CAS_VERSION = "0.0.1"
 
 			def cas(name, options = {})
-				return cas_multi(name, options){ |kv| { kv.keys.first => yield(kv.values.first) } }
-
-				name = namespaced_key(name, options)
-				expiry = expiration(options)
-
-				key_existed, was_updated = instrument_with_log(:cas_core_with_existence, name, expiry) do
-					with do |c|
-						c.cas_core_with_existence(name, true, expiry) do |raw_value|
-							value = yield raw_value
-							value
-						end
-					end
-				end
-
-				key_existed && was_updated
+				cas_multi(name, options) { |kv| { kv.keys.first => yield(kv.values.first) } }
 			end
 
 			def cas_multi(*names, **options)
@@ -61,40 +47,9 @@ module ActiveSupport
 				instrument_error(e) if instrument_errors?
 				raise if raise_errors?
 				false
-				
-
-
 			end
 		end
 	end
 end
 
-module Dalli
-	class Client
 
-		def cas_core_with_existence(key, always_set, ttl=nil, options=nil)
-			puts "inside cas_core_with_existence and always set is #{always_set}"
-
-			(value, cas) = perform(:cas, key)
-			value = (!value || value == 'Not found') ? nil : value
-
-			puts "made it to part blah"
-
-			key_does_not_exist = value.nil?
-			return !key_does_not_exist, false if key_does_not_exist && !always_set
-
-			puts "made it to part blah 2"
-
-
-			newvalue = yield(value)
-			puts "setting newvalue of #{newvalue}"
-			puts "key does not exist here is #{key_does_not_exist}"
-			perform_result = perform(:set, key, newvalue, ttl_or_default(ttl), cas, options)
-
-			puts "perfor result is #{perform_result}"
-
-			return !key_does_not_exist, perform_result
-		end
-
-	end
-end

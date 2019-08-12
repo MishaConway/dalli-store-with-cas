@@ -3,8 +3,7 @@ require 'logger'
 
 class TestDalliStoreWithCas < ActiveSupport::TestCase
 	setup do
-		@cache_options = {expires_in: 60, raise_errors: false}
-		@cache = ActiveSupport::Cache.lookup_store(:dalli_store_with_cas, @cache_options)
+		@cache = ActiveSupport::Cache.lookup_store(:dalli_store_with_cas, expires_in: 60, raise_errors: false)
 		@cache.clear
 
 		# Enable ActiveSupport notifications. Can be disabled in Rails 5.
@@ -57,9 +56,7 @@ class TestDalliStoreWithCas < ActiveSupport::TestCase
 	end
 
 	def test_cas_with_cache_miss
-		result =  @cache.cas('not_exist') { |_value| raise Dalli::DalliError }
-		puts "result is #{result.inspect}"
-		refute result
+		refute @cache.cas('not_exist') { |_value| raise Dalli::DalliError }
 	end
 
 	def test_cas_with_conflict

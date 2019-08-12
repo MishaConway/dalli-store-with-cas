@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Misha Conway"]
   spec.email         = ["mishaAconway@gmail.com"]
 
-  spec.summary       = %q{A version of Dalli Store with CAS support}
-  spec.homepage      = "http://www.github.com"
+  spec.summary       = %q{A version of ActiveSupport::Cache::DalliStore with CAS support compatible with IdentityCache}
+  spec.homepage      = "https://github.com/MishaConway/dalli-store-with-cas"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.

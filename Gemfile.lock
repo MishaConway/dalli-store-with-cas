@@ -15,10 +15,7 @@ GEM
     dalli (2.7.10)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    metaclass (0.0.4)
     minitest (5.11.3)
-    mocha (1.9.0)
-      metaclass (~> 0.0.1)
     rake (10.5.0)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
@@ -32,7 +29,6 @@ DEPENDENCIES
   bundler (~> 1.16)
   dalli
   dalli-store-with-cas!
-  mocha
   rake (~> 10.0)
 
 BUNDLED WITH
