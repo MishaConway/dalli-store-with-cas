@@ -13,7 +13,7 @@ module ActiveSupport
 			def cas_multi(*names, **options)
 				return if names.empty?
 
-				namespaced_keys = names.map{|name| namespaced_key(name, options )}
+				namespaced_keys = names.map { |name| namespaced_key(name, options) }
 				using_single_cas = 1 == namespaced_keys.size
 
 
@@ -21,7 +21,7 @@ module ActiveSupport
 					with do |c|
 						keys_to_value_and_cas = if using_single_cas
 							                        key_value, key_cas = c.get_cas(*namespaced_keys)
-							                        {namespaced_keys.first => [key_value, key_cas]} if key_value
+							                        { namespaced_keys.first => [key_value, key_cas] } if key_value
 							                      else
 								                      c.get_multi_cas(*namespaced_keys)
 						                        end
