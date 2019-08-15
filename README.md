@@ -1,7 +1,7 @@
 # DalliStoreWithCas
 
 Provides ActiveSupport::Cache::DalliStoreWithCas which inherits dalli's ActiveSupport::Cache::DalliStore cache adapter 
-extends it with two new methods, cas and cas_multi. These methods are specifically implemented to be compatible with IdentityCache
+and extends it with two new methods, cas and cas_multi. These methods are specifically implemented to be compatible with IdentityCache
 so it's good news for 
     
     - those wishing to use Dalli with IdentityCache with full support 
@@ -26,15 +26,16 @@ Or install it yourself as:
 
     $ gem install dalli-store-with-cas
 
-## Usage
+## Config
 
-Usage instructions to be added
+In your Rails application configs (ex: config/environments/production.rb)
 
-## Development
+```
+config.cache_store = :dalli_store_with_cas
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
 
 ## Tests
 
